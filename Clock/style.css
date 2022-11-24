@@ -1,0 +1,140 @@
+* {
+   box-sizing: border-box;
+   font-family: Gotham Rounded, sans-serif;
+}
+
+body {
+   background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+   /*linear gradient in css*/
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   overflow: hidden;
+   /*da se ne vidi scroll s desne strane preglednika*/
+}
+
+.clock {
+   width: 300px;
+   height: 300px;
+   background-color: rgb(255, 255, 255, .8);
+   /*bijela boja sa 80% transparentnosti (.8)  - OMOGUCUJE DA BAKGROUND COLOR 'PROBIJA' PREKO OVOG NASEG 'PROZORICICA SA BROJEVIMA */
+
+   border-radius: 50%;
+   /* da dobijemo okrugli oblik*/
+
+   border: 2px solid black;
+   /* obrub*/
+   position: relative;
+}
+
+.clock .number {
+
+   --rotation: 0;
+   /*varijabla*/
+
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+
+   transform: rotate(var(--rotation));
+   font-size: 1.5rem;
+}
+
+.clock .number1 {
+   --rotation: 30deg;
+}
+
+.clock .number2 {
+   --rotation: 60deg;
+}
+
+.clock .number3 {
+   --rotation: 90deg;
+}
+
+.clock .number4 {
+   --rotation: 120deg;
+}
+
+.clock .number5 {
+   --rotation: 150deg;
+}
+
+.clock .number6 {
+   --rotation: 180deg;
+}
+
+.clock .number7 {
+   --rotation: 210deg;
+}
+
+.clock .number8 {
+   --rotation: 240deg;
+}
+
+.clock .number9 {
+   --rotation: 270deg;
+}
+
+.clock .number10 {
+   --rotation: 300deg;
+}
+
+.clock .number11 {
+   --rotation: 330deg;
+}
+
+.clock .hand {
+   --rotation: 0;
+   position: absolute;
+   bottom: 50%;
+   left: 50%;
+
+   background-color: black;
+   border: 1px solid white;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+   /*kako bi vrh kazaljke bio zaobljen, kao sto je to i slucaj u prvavom satu*/
+   transform-origin: bottom;
+   /* od kuda zelis rotaciju hand-a (u slučaju sata kazaljka se pomakuje sa donjim dijelom*/
+   z-index: 10;
+   transform: translate(-50%) rotate(calc(var(--rotation) * 1deg));
+   /* mice objekt 50% u sirinu unazad - kako bih kazaljka i broj 12 bili na sredini jedan drugoga*/
+
+
+}
+
+.clock::after {
+   /* klasa za crnu tockicu koja kao spaja sve druge kazaljke na satu (ona u sredini) */
+   content: '';
+   position: absolute;
+   background-color: black;
+   z-index: 11;
+   width: 15px;
+   height: 15px;
+   top: 50%;
+   left: 50%;
+   border-radius: 50%;
+   transform: translate(-50%, -50%);
+   /* sa obje strane*/
+}
+
+.clock .hand.second {
+   width: 3px;
+   height: 45%;
+   background-color: red;
+}
+
+.clock .hand.minute {
+   width: 7px;
+   height: 40%;
+   background-color: black;
+}
+
+.clock .hand.hour {
+   width: 10px;
+   height: 35%;
+   background-color: black;
+}
